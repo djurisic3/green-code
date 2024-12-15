@@ -1,0 +1,22 @@
+name: azure-demo
+description: example manifest invoking Azure plugin
+initialize:
+  plugins:
+    azure-importer:
+      method: AzureImporter
+      path: '@grnsft/if-unofficial-plugins'
+tree:
+  children:
+    child:
+      pipeline:
+        - azure-importer
+      config:
+        azure-importer:
+          azure-observation-window: 5 min
+          azure-observation-aggregation: 'average'
+          azure-subscription-id: <input>
+          azure-resource-group: IF
+          azure-vm-name: ifdemo
+      inputs:
+        - timestamp: '2024-04-02T13:43:00.000Z'
+          duration: 150
